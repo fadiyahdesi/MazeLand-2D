@@ -15,7 +15,7 @@ public class WallCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Kena Dinding! Reset posisi.");
-            player.ResetPosition();
+            //player.ResetPosition();
         }
     }
 
