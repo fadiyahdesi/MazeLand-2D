@@ -46,11 +46,17 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetFloat("moveX", movement.x);
         anim.SetFloat("moveY", movement.y);
+
+        // Hitung kecepatan dari movement vector
+        float speed = movement.sqrMagnitude; // atau bisa pakai movement.magnitude
+
+        anim.SetFloat("Speed", speed);
     }
+
 
     private void Move()
     {
-        
+
         rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
     }
 

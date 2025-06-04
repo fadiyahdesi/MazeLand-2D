@@ -30,10 +30,4 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
     }
-
-    public void ExitToMainMenu()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("LevelEasy"); // Pastikan scene ini ada di Build Settings
-    }
 }
