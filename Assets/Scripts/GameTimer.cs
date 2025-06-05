@@ -9,6 +9,8 @@ public class GameTimer : MonoBehaviour
     public TMP_Text timerText;
     public bool isGameActive = false;
     public bool isPaused = false;
+    private bool isFinished = false;
+
     public Transform player;
     private Vector3 startPosition;
 
@@ -24,7 +26,7 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
-        if (isGameActive && !isPaused)
+        if (isGameActive && !isPaused && !isFinished)
         {
             if (timeRemaining > 0)
             {
@@ -55,6 +57,7 @@ public class GameTimer : MonoBehaviour
             timeRemaining = 60f;
             isGameActive = true;
             isPaused = false;
+            isFinished = false;
         }
         else if (isPaused)
         {
@@ -85,8 +88,9 @@ public class GameTimer : MonoBehaviour
 
     public void FinishGame()
     {
+        isFinished = true;
         isGameActive = false;
         isPaused = false;
-        Debug.Log("Selamat kamu berhasil!");
+        UpdateTimerUI();
     }
 }

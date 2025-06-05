@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class TriggerFinish : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private bool hasFinished = false; 
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasFinished)
         {
-            Debug.Log("Trigger masuk!");
             GameTimer timer = FindObjectOfType<GameTimer>();
             if (timer != null)
             {
                 timer.FinishGame();
+                Debug.Log("Selamat! Anda berhasil menyelesaikan level easy ini!");
+                hasFinished = true;
             }
         }
     }
