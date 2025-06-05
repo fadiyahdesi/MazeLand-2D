@@ -8,14 +8,12 @@ public class GameTimer : MonoBehaviour
     public float timeRemaining = 60f;
     public TMP_Text timerText;
     public bool isGameActive = false;
-    public bool isPaused = false; // Tambahan flag untuk pause
-
+    public bool isPaused = false;
     public Transform player;
     private Vector3 startPosition;
 
     void Start()
     {
-        timeRemaining = 60f;
         if (player != null)
         {
             startPosition = player.position;
@@ -53,8 +51,14 @@ public class GameTimer : MonoBehaviour
     {
         if (!isGameActive)
         {
+            // Mulai game dari awal
             timeRemaining = 60f;
             isGameActive = true;
+            isPaused = false;
+        }
+        else if (isPaused)
+        {
+            // Lanjutkan game dari pause
             isPaused = false;
         }
     }
@@ -75,7 +79,8 @@ public class GameTimer : MonoBehaviour
         {
             player.position = startPosition;
         }
-        // Game dihentikan sementara, user harus klik tombol untuk restart/mulai lagi
+
+        // Game dihentikan, tunggu input user
     }
 
     public void FinishGame()
@@ -84,5 +89,4 @@ public class GameTimer : MonoBehaviour
         isPaused = false;
         Debug.Log("Selamat kamu berhasil!");
     }
-
 }
