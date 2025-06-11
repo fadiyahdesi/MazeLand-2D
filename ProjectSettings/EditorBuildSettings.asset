@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelEasy.unity
     guid: dcb98f9d3d682684f8fa201b6f56d578
-  - enabled: 0
-    path: Assets/Scenes/ChallengeEasy.unity
-    guid: 0bf58efcb6bd0a047a95916152f50321
+  - enabled: 1
+    path: Assets/Scenes/LevelMedium.unity
+    guid: 9bfffe12cc7fa224e99d7c98234e2d31
   m_configObjects: {}
