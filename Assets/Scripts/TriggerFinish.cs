@@ -11,7 +11,7 @@ public class TriggerFinish : MonoBehaviour
             if (timer != null)
             {
                 timer.FinishGame();
-                Debug.Log("Selamat! Anda berhasil menyelesaikan level easy ini!");
+                Debug.Log("Selamat! Anda berhasil menyelesaikan level ini!");
                 hasFinished = true;
             }
         }
