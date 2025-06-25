@@ -14,6 +14,11 @@ public class GameTimer : MonoBehaviour
     public Transform player;
     private Vector3 startPosition;
 
+    public GameObject finishPanel;
+    public GameObject playerObj;
+    public GameObject triggerObj;
+    public GameObject wallObj;
+
     void Start()
     {
         if (player != null)
@@ -22,6 +27,10 @@ public class GameTimer : MonoBehaviour
         }
 
         UpdateTimerUI();
+        if (finishPanel != null)
+        {
+            finishPanel.SetActive(false); 
+        }
     }
 
     void Update()
@@ -51,7 +60,7 @@ public class GameTimer : MonoBehaviour
 
     public void StartTimer()
     {
-        if (!isGameActive)
+        if (!isGameActive && !isFinished)
         {
             // Mulai game dari awal
             timeRemaining = 60f;
@@ -59,7 +68,7 @@ public class GameTimer : MonoBehaviour
             isPaused = false;
             isFinished = false;
         }
-        else if (isPaused)
+        else if (isPaused && !isFinished)
         {
             // Lanjutkan game dari pause
             isPaused = false;
@@ -68,7 +77,7 @@ public class GameTimer : MonoBehaviour
 
     public void TogglePause()
     {
-        if (isGameActive)
+        if (isGameActive && !isFinished)
         {
             isPaused = !isPaused;
         }
@@ -76,21 +85,34 @@ public class GameTimer : MonoBehaviour
 
     void EndGame()
     {
-        Debug.Log("Waktu habis! Player kembali ke posisi awal.");
-
         if (player != null)
         {
             player.position = startPosition;
         }
-
-        // Game dihentikan, tunggu input user
     }
 
     public void FinishGame()
     {
-        isFinished = true;
-        isGameActive = false;
-        isPaused = false;
-        UpdateTimerUI();
+        if (!isFinished)
+        {
+            isFinished = true;
+            isGameActive = false;
+            isPaused = false;
+            UpdateTimerUI();
+
+            if (finishPanel != null)
+            {
+                finishPanel.SetActive(true);
+            }
+
+            if (playerObj != null)
+                playerObj.SetActive(false);
+
+            if (triggerObj != null)
+                triggerObj.SetActive(false);
+
+            if (wallObj != null)
+                wallObj.SetActive(false);
+        }
     }
 }
