@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public bool FacingLeft { get { return facingLeft; } set { facingLeft = value; } }
-    //public static PlayerController Instance;
     [SerializeField] private float moveSpeed = 1f;
     private PlayerController playerControl;
     private Vector2 movement;
@@ -48,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("moveY", movement.y);
 
         // Hitung kecepatan dari movement vector
-        float speed = movement.sqrMagnitude; // atau bisa pakai movement.magnitude
+        float speed = movement.sqrMagnitude;
 
         anim.SetFloat("Speed", speed);
     }
